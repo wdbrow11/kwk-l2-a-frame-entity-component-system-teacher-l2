@@ -57,7 +57,9 @@ For our randomly generated spheres, we are going to have to add our animation en
 
 Don't forget to update your `index.js` code so that the `<a-sphere>`s have their animation added before they are appended to the DOM!
 
-If possible, work in small groups or pairs! If you are having trouble, take a look at the `createSphere` function and the [documentation][animations-docs] for guidance. If you are stumped by implementing an animation that transforms the _relative_ position of the entity instead of the _absolute_ position, take a look at [this page][position-doc]. There are several ways you can implement this -- don't forget that an elements x/y/z coordinates can be accessed directly via `entity.position.[x, y, z]`.
+If possible, work in small groups or pairs! If you are having trouble, take a look at the `createSphere` function and the [documentation][animations-docs] for guidance. If you are stumped by implementing an animation that transforms the _relative_ position of the entity instead of the _absolute_ position, take a look at [this page][position-doc]. There are several ways you can implement this -- see what works for you!
+
+**BONUS:** provide a random animation start delay (within reason) to ensure the animations are not all in sync. (Reference the docs!). Below is a GIF of the solution we came up with:
 
 In the next lab, we are going to explore "System" in the ECS paradigm and see how we can tie it all together into an interactive experience.
 

@@ -41,8 +41,6 @@ function createSphere() {
 
 function addBobAnimationToElement(el, coord) {
   const newAnim = document.createElement('a-animation')
-  console.log(coord);
-  console.log([coord[0], coord[1] - 1, coord[2]].join(" "))
   newAnim.setAttribute("attribute", "position")
   newAnim.setAttribute("repeat", "indefinite")
   newAnim.setAttribute("from", [coord[0], coord[1] - 1, coord[2]].join(" "))
@@ -55,9 +53,13 @@ function addBobAnimationToElement(el, coord) {
 }
 
 function createSpheres() {
-  while (startPositions.length > 0) {
-    const [el, coords] = createSphere()
-    addBobAnimationToElement(el, coords)
-    addEntityToScene(el)
+  x = 4
+  while (x > 0) {
+    setTimeout(() => {
+      let [el, coords] = createSphere()
+      el = addBobAnimationToElement(el, coords)
+      addEntityToScene(el)
+    }, Math.random() * 2500)
+    x--
   }
 }
