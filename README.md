@@ -45,7 +45,7 @@ repeat="indefinite"
 ##### Randomly Generated Spheres
 
 For our randomly generated spheres, we are going to have to add our animation entities in our JavaScript. Go ahead and create a new function named `addBobAnimationToElement`. This function should do the following:
-  - accepts, in first positoin, single argument of a DOM element (in our example, it would be an `<a-sphere>`)
+  - accepts, in first position, an argument of a DOM element (in our example, it would be an `<a-sphere>`)
   - create an `<a-animation>` element that does the following:
     - acts on the `position` attribute of its parent
     - repeats indefinitely
