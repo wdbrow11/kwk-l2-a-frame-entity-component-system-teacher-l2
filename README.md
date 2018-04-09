@@ -63,7 +63,7 @@ If possible, work in small groups or pairs! If you are having trouble, take a lo
 
 ![](./assets/completed-example.gif)
 
-In the next lab, we are going to explore "System" in the ECS paradigm and see how we can tie it all together into an interactive experience.
+In the next lab, we are going to explore "System" in the ECS paradigm and see how we can tie it all together into an interactive experience. We will use a lot of the same code from this repository. 
 
 [animations-doc]: "https://github.com/aframevr/aframe/blob/master/docs/core/animations.md"
 [position-doc]: "https://github.com/aframevr/aframe/blob/master/docs/components/position.md"
