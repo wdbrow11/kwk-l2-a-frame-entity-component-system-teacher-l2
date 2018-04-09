@@ -1,11 +1,63 @@
+// a reference to the enclosing scene element.
+// We will append newly made spheres directly to this.
 const SCENE = document.querySelector('a-scene')
-console.log('weis');
+
+// a few random starting positions we can use to make spheres.
+const startPositions = [
+  [-3, -2, -4],
+  [-1, 5, 2],
+  [4, -5, -1],
+  [2, 3, 5]
+]
+
+const colors = [
+  "red",
+  "blue",
+  "yellow",
+  "pink"
+]
+
+// removes and returns a random element from an array
+function sample(arr) {
+  const randIdx = Math.floor(Math.random() * arr.length)
+  const value = arr[randIdx]
+  arr.splice(randIdx, 1)
+  return value
+}
+
 function addEntityToScene(entity) {
   SCENE.appendChild(entity)
 }
 
-function makeSphere() {
-  return document.createElement('a-sphere')
+function createSphere() {
+  const newSphere = document.createElement('a-sphere')
+  const color = sample(colors)
+  const coords = sample(startPositions)
+  newSphere.setAttribute("radius", Math.ceil(Math.random() * 3))
+  newSphere.setAttribute("color", color)
+  newSphere.setAttribute("position", coords)
+  return [newSphere, coords]
 }
 
-var x = makeSphere()
+function addBobAnimationToElement(el, coord) {
+  const newAnim = document.createElement('a-animation')
+  console.log(coord);
+  console.log([coord[0], coord[1] - 1, coord[2]].join(" "))
+  newAnim.setAttribute("attribute", "position")
+  newAnim.setAttribute("repeat", "indefinite")
+  newAnim.setAttribute("from", [coord[0], coord[1] - 1, coord[2]].join(" "))
+  newAnim.setAttribute("to", [coord[0], coord[1] + 1, coord[2]].join(" "))
+  newAnim.setAttribute("easing", "ease")
+  newAnim.setAttribute("direction", "alternate")
+  newAnim.setAttribute("dur", "2000")
+  el.appendChild(newAnim)
+  return el
+}
+
+function createSpheres() {
+  while (startPositions.length > 0) {
+    const [el, coords] = createSphere()
+    addBobAnimationToElement(el, coords)
+    addEntityToScene(el)
+  }
+}

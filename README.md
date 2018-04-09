@@ -1,6 +1,6 @@
 ## Objectives
 
-1. Explore the Entity-Component-System in steps
+1. Explore the first two elements of the ECS paradigm: Entities and Components
 
 ## Overview
 
@@ -8,33 +8,58 @@ We are going to build a simple world step by step, adding complexity as we go. W
 
 We will be building off of the provided `index.html` file, and start writing our own functionality in with `index.js`. You will see that both the `a-frame` library, as well as our `index.js` script, have already been included in the `html`.
 
-## Entity
+## Making Entities, Adding Components...
 
-- make sphere viewing it and add texture
-- why is it all black? we have lights disabled! let's add an ambient light so everything is generally lit, without a specific source of the light (uncomment light line in html)
-- make light sources inside spheres
+Let's add a sphere to our scene. Go ahead and create an `<a-sphere>` providing it a starting position of `position="0 0 0"`, and a radius of "2". Give it a color attribute as either a string, hex value, or rgb value (i.e. `#33F`, or `blue`).
 
-- write function to make many spheres
-- move inside it oops cant see on to component
+Let's also uncomment out the `camera` entity we have already provided. By default, A-Frame provides us with a camera. By using the one we provided in `index.html`, we can explicitly control the perspective we have (as a user) in our scene. You will notice that the position of the starting position of the camera is 15 units in the third coordinate of the `position` attribute, aka the "z-axis". This allows us to back the perspective up so that we can see the entity we rendered at starting position "0 0 0" smack-dab in the middle of our scene!
 
-## Component
+Go ahead and start your server if you haven't already and check out what we have rendering in the browser. If everything is in place, you will most likely see a black shape in the middle of your scene. If you are wondering why it doesn't have the color you provided it, this is because we have set the parent `a-scene` tag to have no lighting! Uncomment the `<a-entity>` line with the `light` attribute to ensure we have nice even illumination everywhere.
 
-- change the painting to the inside
-- we have actually been working with components already. remember what we defined components as "quote". well, all of the attributes in the html are components!
-- add a bounding component to the sphere?
-- send one ball to reflect?
+Alright -- now that we have some basics squared away, let's incorporate JavaScript to see how we can automatically spawn several of these `<a-sphere>` entities. The next bit we will write in `index.js`.
 
-## System
+## Incorporating JavaScript
 
-- balls moving based on some type of gravity thing
-- or the game itself spawns balls and avoid them
+You will see that we have provided several starter functions in `index.js` to get you on your way. Please implement the `createSpheres` function. It should, as long as we have more random values in our two arrays, create and add `<a-spheres>` to the scene using the `addEntityToScene` and the `createSphere` functions. If everything is working properly, yours should look something like the image below (colors/positions will be random of course!). You will see that we invoked `createSpheres()` directly in the Chrome console:
 
+![](./assets/example-1.png)
 
+## Jazzing It Up
 
-### Part 1: Do Some Stuff
+##### Center Sphere
 
-## Resources
+Let's add an [animation][animations-doc] to our spheres to make our scene really pop. For our center sphere, let's have it rotate around the y-axis. For our other spheres a slight bob, so that they move enough to make a relaxing floating sphere scene, should do the trick.
 
-* [Stack Exchange](http://www.stackexchange.com) - [Some Question on Stack Exchange](http://www.stackexchange.com/questions/123)
+Take a moment to peak at the [documentation][animations-doc]. You will see that, to provide an animation to an `<a-entity>`, we need to provide an `<a-animation>` within the entity's tags. Add a fixed rotation to our central `<a-sphere>` in `index.html`. (If you haven't already, make sure you give the `<a-sphere>` a texture instead of a color: `<a-sphere src="./assets/wall-texture.jpg"...>`. We used the following attributes to ensure a steady rotation around the y-axis:
 
-<p class='util--hide'>View <a href='https://learn.co/lessons/entity-component-system'>Entity Component System</a> on Learn.co and start learning to code for free.</p>
+```
+attribute="rotation"
+dur="10000"
+fill="none"
+from="0 0 0"
+to="0 360 0"
+easing="linear"
+repeat="indefinite"
+```
+
+##### Randomly Generated Spheres
+
+For our randomly generated spheres, we are going to have to add our animation entities in our JavaScript. Go ahead and create a new function named `addBobAnimationToElement`. This function should do the following:
+  - accepts, in first positoin, single argument of a DOM element (in our example, it would be an `<a-sphere>`)
+  - create an `<a-animation>` element that does the following:
+    - acts on the `position` attribute of its parent
+    - repeats indefinitely
+    - starts at -1 and ends at 1 on the y-axis **(relative to its already set position!)**
+    - uses an easing and direction option to provide a bob effect
+    - completes a full animation in 2 seconds or less
+  - using `appendChild`, it adds that new animation as a child element of the passed argument
+  - returns the originally passed DOM element with the animation added
+
+Don't forget to update your `index.js` code so that the `<a-sphere>`s have their animation added before they are appended to the DOM!
+
+If possible, work in small groups or pairs! If you are having trouble, take a look at the `createSphere` function and the [documentation][animations-docs] for guidance. If you are stumped by implementing an animation that transforms the _relative_ position of the entity instead of the _absolute_ position, take a look at [this page][position-doc]. There are several ways you can implement this -- don't forget that an elements x/y/z coordinates can be accessed directly via `entity.position.[x, y, z]`.
+
+In the next lab, we are going to explore "System" in the ECS paradigm and see how we can tie it all together into an interactive experience.
+
+[animations-doc]: "https://github.com/aframevr/aframe/blob/master/docs/core/animations.md"
+[position-doc]: "https://github.com/aframevr/aframe/blob/master/docs/components/position.md"
