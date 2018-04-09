@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+
+    <a-scene light="defaultLightsEnabled: false">
+
+      <!-- light source element -->
+      <a-entity light="type: ambient"></a-entity>
+
+      <!-- our camera aka user perspective element -->
+      <a-entity position="0 0 15">
+        <a-camera></a-camera>
+      </a-entity>
+      <a-sphere position="0 0 0" radius="2" src="./assets/wall-texture.jpg"></a-sphere>
+    </a-scene>
+
+    <script src="./index.js"></script>
+  </body>
+
+</html>
+
+<!-- material="side: double" -->
