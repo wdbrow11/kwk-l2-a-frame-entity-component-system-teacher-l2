@@ -36,30 +36,9 @@ function createSphere() {
   newSphere.setAttribute("radius", Math.ceil(Math.random() * 3))
   newSphere.setAttribute("color", color)
   newSphere.setAttribute("position", coords)
-  return [newSphere, coords]
-}
-
-function addBobAnimationToElement(el, coord) {
-  const newAnim = document.createElement('a-animation')
-  newAnim.setAttribute("attribute", "position")
-  newAnim.setAttribute("repeat", "indefinite")
-  newAnim.setAttribute("from", [coord[0], coord[1] - 1, coord[2]].join(" "))
-  newAnim.setAttribute("to", [coord[0], coord[1] + 1, coord[2]].join(" "))
-  newAnim.setAttribute("easing", "ease")
-  newAnim.setAttribute("direction", "alternate")
-  newAnim.setAttribute("dur", "2000")
-  el.appendChild(newAnim)
-  return el
+  return newSphere
 }
 
 function createSpheres() {
-  x = 4
-  while (x > 0) {
-    setTimeout(() => {
-      let [el, coords] = createSphere()
-      el = addBobAnimationToElement(el, coords)
-      addEntityToScene(el)
-    }, Math.random() * 2500)
-    x--
-  }
+  // TODO: implement me!
 }

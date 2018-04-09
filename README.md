@@ -45,7 +45,7 @@ repeat="indefinite"
 ##### Randomly Generated Spheres
 
 For our randomly generated spheres, we are going to have to add our animation entities in our JavaScript. Go ahead and create a new function named `addBobAnimationToElement`. This function should do the following:
-  - accepts, in first positoin, single argument of a DOM element (in our example, it would be an `<a-sphere>`)
+  - accepts, in first position, a DOM element (in our example, it would be an `<a-sphere>`)
   - create an `<a-animation>` element that does the following:
     - acts on the `position` attribute of its parent
     - repeats indefinitely
@@ -63,7 +63,7 @@ If possible, work in small groups or pairs! If you are having trouble, take a lo
 
 ![](./assets/completed-example.gif)
 
-In the next lab, we are going to explore "System" in the ECS paradigm and see how we can tie it all together into an interactive experience. We will use a lot of the same code from this repository. 
+In the next lab, we are going to explore "System" in the ECS paradigm and see how we can tie it all together into an interactive experience. We will use a lot of the same code from this repository.
 
 [animations-doc]: "https://github.com/aframevr/aframe/blob/master/docs/core/animations.md"
 [position-doc]: "https://github.com/aframevr/aframe/blob/master/docs/components/position.md"
