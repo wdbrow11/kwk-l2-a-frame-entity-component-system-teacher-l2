@@ -61,6 +61,8 @@ If possible, work in small groups or pairs! If you are having trouble, take a lo
 
 **BONUS:** provide a random animation start delay (within reason) to ensure the animations are not all in sync. (Reference the docs!). Below is a GIF of the solution we came up with:
 
+![](./assets/completed-example.gif)
+
 In the next lab, we are going to explore "System" in the ECS paradigm and see how we can tie it all together into an interactive experience.
 
 [animations-doc]: "https://github.com/aframevr/aframe/blob/master/docs/core/animations.md"
