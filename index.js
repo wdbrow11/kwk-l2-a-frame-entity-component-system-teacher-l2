@@ -32,7 +32,7 @@ function addEntityToScene(entity) {
 function createSphere() {
   const newSphere = document.createElement('a-sphere')
   const color = sample(colors)
-  const coords = sample(startPositions)
+  const coords = sample(startPositions).join(' ')
   newSphere.setAttribute("radius", Math.ceil(Math.random() * 3))
   newSphere.setAttribute("color", color)
   newSphere.setAttribute("position", coords)
