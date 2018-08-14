@@ -43,4 +43,3 @@ function createSpheres() {
   addEntityToScene(createSphere)
 }
 
-createSpheres(); 
